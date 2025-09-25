@@ -73,12 +73,12 @@ class ContactSection extends StatelessWidget {
             children: [
               _buildContactMethod(
                 icon: Icons.mail,
-                detail: 'contact@collectpanel.fr',
+                detail: 'info@collectpanel.com',
               ),
               const SizedBox(width: 40),
               _buildContactMethod(
                 icon: Icons.phone,
-                detail: '+33 1 23 45 67 89',
+                detail: '+225 0703785519',
               ),
               const SizedBox(width: 40),
               _buildContactMethod(

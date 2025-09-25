@@ -3,130 +3,112 @@ import 'package:flutter/material.dart';
 class PanelsSection extends StatelessWidget {
   const PanelsSection({super.key});
 
+  final List<Map<String, String>> panels = const [
+    {
+      'title': 'Panels en ligne',
+      'description': 'Touchez vos clients où qu’ils soient grâce à nos panels en ligne rapides et fiables.',
+      'image': 'assets/images/brand_creation_15.jpg',
+    },
+    {
+      'title': 'Panels téléphoniques',
+      'description': 'Gardez la proximité avec vos consommateurs grâce à nos enquêtes téléphoniques personnalisées.',
+      'image': 'assets/images/11602351.jpg',
+    },
+    {
+      'title': 'Panels face-à-face',
+      'description': 'Vivez l’authenticité du terrain avec nos panels en face-à-face, pour des insights plus profonds.',
+      'image': 'assets/images/fingerprint-login-smartphone-urban-setting.jpg',
+    },
+    {
+      'title': 'Panels spécialisés',
+      'description': 'Accédez à des panels ciblés et qualifiés pour des résultats précis et exploitables.',
+      'image': 'assets/images/cacfccf8-132c-48f8-a6ac-196a32cb762a.jpg',
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 24),
-      color: const Color(0xFFF5F9FC),
+      width: double.infinity, // pleine largeur
+      color: Colors.grey.shade100,
+      padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 20), // plus long et large
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const Text(
-            'Nos panels de consommateurs',
+            'Nos Types de Panels',
             style: TextStyle(
-              fontSize: 32,
+              fontSize: 34,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF003366),
-            ),
-          ),
-          const SizedBox(height: 10),
-          Container(
-            width: 60,
-            height: 4,
-            color: const Color(0xFF0066CC),
-          ),
-          const SizedBox(height: 50),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _buildPanelCard(
-                title: 'Panel Grand Public',
-                description: 'Participez à des études sur une grande variété de produits et services du quotidien.',
-              ),
-              _buildPanelCard(
-                title: 'Panel B2B',
-                description: 'Donnez votre avis sur des solutions professionnelles si vous êtes décideur en entreprise.',
-              ),
-              _buildPanelCard(
-                title: 'Panel Spécialisé',
-                description: 'Rejoignez des panels ciblés selon vos domaines d\'expertise ou centres d\'intérêt.',
-              ),
-            ],
-          ),
-          const SizedBox(height: 40),
-          ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF0066CC),
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 16),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(4),
-              ),
-            ),
-            child: const Text(
-              'Découvrir tous nos panels',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildPanelCard({
-    required String title,
-    required String description,
-  }) {
-    return Container(
-      width: 320,
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: 120,
-            decoration: BoxDecoration(
-              color: const Color(0xFF0066CC).withOpacity(0.1),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: const Icon(
-              Icons.people,
-              size: 60,
               color: Color(0xFF0066CC),
             ),
           ),
-          const SizedBox(height: 20),
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF003366),
-            ),
-          ),
-          const SizedBox(height: 12),
-          Text(
-            description,
-            style: const TextStyle(
-              fontSize: 16,
-              color: Colors.black87,
-              height: 1.5,
-            ),
-          ),
-          const SizedBox(height: 20),
-          TextButton(
-            onPressed: () {},
-            child: const Text(
-              'En savoir plus →',
-              style: TextStyle(
-                color: Color(0xFF0066CC),
-                fontWeight: FontWeight.w600,
-              ),
-            ),
+          const SizedBox(height: 40),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              int crossAxisCount = 1;
+              if (constraints.maxWidth > 1200) {
+                crossAxisCount = 4; // grand écran (desktop large)
+              } else if (constraints.maxWidth > 800) {
+                crossAxisCount = 3; // desktop normal
+              } else if (constraints.maxWidth > 600) {
+                crossAxisCount = 2; // tablette
+              }
+
+              return GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: crossAxisCount,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                  childAspectRatio: 0.9,
+                ),
+                itemCount: panels.length,
+                itemBuilder: (context, index) {
+                  final panel = panels[index];
+                  return Card(
+                    elevation: 6,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: Image.asset(
+                              panel['image']!,
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                          const SizedBox(height: 16),
+                          Text(
+                            panel['title']!,
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF0066CC),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            panel['description']!,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 15,
+                              color: Colors.black87,
+                              height: 1.4,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              );
+            },
           ),
         ],
       ),

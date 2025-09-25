@@ -27,9 +27,10 @@ class Footer extends StatelessWidget {
               _buildFooterColumn(
                 title: 'Panels',
                 items: [
-                  'Panel Grand Public',
-                  'Panel B2B',
-                  'Panel Spécialisé',
+                  'Panel en ligne',
+                  'Panel téléphonique',
+                  'Face à face',
+                  'Panel spécialisé',
                   'Devenir panéliste',
                   'Espace panéliste',
                 ],
@@ -48,7 +49,7 @@ class Footer extends StatelessWidget {
                 title: 'Suivez-nous',
                 items: [
                   'LinkedIn',
-                  'Twitter',
+                  'TikTok',
                   'Facebook',
                   'Instagram',
                   'YouTube',
@@ -60,7 +61,7 @@ class Footer extends StatelessWidget {
           const Divider(color: Colors.white24),
           const SizedBox(height: 20),
           const Text(
-            '© 2023 CollectPanel France. Tous droits réservés.',
+            '© 2023 CollectPanel Côte d\'Ivoire. Tous droits réservés.',
             style: TextStyle(
               color: Colors.white70,
               fontSize: 14,
