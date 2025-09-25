@@ -97,7 +97,7 @@ class HeroSection extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
       ),
       child: const VideoPlayerWidget(
-        videoPath: 'assets/videos/DataQualityCampaign_V04_compressed.mp4', // MODIFIEZ ICI
+        videoPath: 'assets/videos/5948814_Gen_Z_Generation_Z_3840x2160.mp4', // MODIFIEZ ICI
       ),
     );
   }
