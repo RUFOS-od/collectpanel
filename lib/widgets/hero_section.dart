@@ -49,7 +49,7 @@ class HeroSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            'Notre panel de consommateurs - Obtenir rapidement de vraies réponses de la part de vraies personnes',
+            'Notre panel de consommateurs - Obtenir de vraies réponses de la part de vraies personnes',
             style: TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.w600,
@@ -59,10 +59,7 @@ class HeroSection extends StatelessWidget {
           ),
           const SizedBox(height: 43),
           const Text(
-            "Notre solution révolutionne la collecte de données en Afrique."
-            "Nous sommes une entreprise innovante spécialisée dans la collecte intelligente de données marketing en Afrique."
-            "Notre mission est de réinventer la manière dont les marques, institutions et ONG accèdent aux insights consommateurs, en combinant la technologie mobile, l’intelligence artificielle et le pouvoir des panels rémunérés."
-            "Nous croyons que chaque donnée est une source d’intelligence stratégique et que chaque répondant mérite d’être valorisé et récompensé pour sa contribution.",
+            'Chez CollectPanel, vous obtenez des données réelles collectées auprès de personnes réelles - un point de départ naturel pour toute étude de marché précise. Pour que votre prochaine décision soit la bonne.',
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w300,

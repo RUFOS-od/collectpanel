@@ -64,7 +64,7 @@ class WhyPanelsMatterSection extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8),
         child: Image.asset(
-          'assets/images/why_panels_matter-scaled.jpg',
+          'assets/images/VEC SAV 359-04.jpg',
           fit: BoxFit.cover,
           height: 400,
           // Placeholder en cas d'erreur de chargement

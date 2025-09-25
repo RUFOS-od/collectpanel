@@ -60,7 +60,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
- #   - assets/videos/DataQualityCampaign_V04_compressed.mp4
+    - assets/videos/DataQualityCampaign_V04_compressed.mp4
 
   # To add assets to your application, add an assets section, like this:
   # assets:
