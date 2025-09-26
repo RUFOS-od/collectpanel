@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:collect_panel/widgets/video_player_widget.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HeroSection extends StatelessWidget {
   const HeroSection({super.key});
@@ -12,27 +12,27 @@ class HeroSection extends StatelessWidget {
       child: LayoutBuilder(
         builder: (context, constraints) {
           if (constraints.maxWidth < 1000) {
-            // Version mobile
+            // Version mobile : contenu au-dessus, image en dessous
             return Column(
               children: [
                 _buildContentSection(),
-                const SizedBox(height: 30),
-                _buildVideoSection(),
+                const SizedBox(height: 40),
+                _buildImageSection(),
               ],
             );
           } else {
-            // Version desktop
+            // Version desktop : contenu à gauche, image à droite
             return Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Expanded(
                   flex: 5,
                   child: _buildContentSection(),
                 ),
-                const SizedBox(width: 30),
+                const SizedBox(width: 40),
                 Expanded(
-                  flex: 7,
-                  child: _buildVideoSection(),
+                  flex: 6,
+                  child: _buildImageSection(),
                 ),
               ],
             );
@@ -42,6 +42,7 @@ class HeroSection extends StatelessWidget {
     );
   }
 
+  /// --- Texte principal (gauche) ---
   Widget _buildContentSection() {
     return Container(
       padding: const EdgeInsets.only(right: 20),
@@ -49,22 +50,23 @@ class HeroSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            'Notre panel de consommateurs - Obtenir de vraies réponses de la part de vraies personnes',
+            'Obtenez des réponses réelles,\nde vraies personnes',
             style: TextStyle(
-              fontSize: 32,
-              fontWeight: FontWeight.w600,
+              fontSize: 36,
+              fontWeight: FontWeight.w700,
               color: Colors.black,
-              height: 1.01,
+              height: 1.2,
             ),
           ),
-          const SizedBox(height: 43),
+          const SizedBox(height: 30),
           const Text(
-            'Chez CollectPanel, vous obtenez des données réelles collectées auprès de personnes réelles - un point de départ naturel pour toute étude de marché précise. Pour que votre prochaine décision soit la bonne.',
+            'Chez CollectPanel, nous connectons les marques aux consommateurs authentiques. '
+            'Des données fiables pour guider vos décisions et assurer le succès de vos projets.',
             style: TextStyle(
               fontSize: 16,
-              fontWeight: FontWeight.w300,
+              fontWeight: FontWeight.w400,
               color: Colors.black87,
-              height: 1.5,
+              height: 1.6,
             ),
           ),
           const SizedBox(height: 30),
@@ -74,7 +76,7 @@ class HeroSection extends StatelessWidget {
               backgroundColor: const Color(0xFF0066CC),
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 16),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(4),
+                borderRadius: BorderRadius.circular(6),
               ),
             ),
             child: const Text(
@@ -91,13 +93,14 @@ class HeroSection extends StatelessWidget {
     );
   }
 
-  Widget _buildVideoSection() {
+  /// --- Illustration SVG (droite) ---
+  Widget _buildImageSection() {
     return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: const VideoPlayerWidget(
-        videoPath: 'assets/videos/5948814_Gen_Z_Generation_Z_3840x2160.mp4', // MODIFIEZ ICI
+      padding: const EdgeInsets.all(16),
+      child: SvgPicture.asset(
+        'assets/images/onlineP.svg', // 🔥 chemin de ton SVG
+        fit: BoxFit.contain,
+        height: 400,
       ),
     );
   }
